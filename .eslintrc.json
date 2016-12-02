@@ -1,0 +1,43 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "arrow-parens": [ "error", "as-needed" ],
+    "array-bracket-spacing": [ "error", "always" ],
+    "brace-style": [ "error" ],
+    "comma-dangle": [ "error", "always-multiline" ],
+    "eqeqeq": [ "error", "smart" ],
+    "indent": [ "error", 2, {
+      "SwitchCase": 1,
+      "VariableDeclarator": {
+        "var": 2,
+        "let": 2,
+        "const": 3
+      }
+    } ],
+    "linebreak-style": [ "error", "unix" ],
+    "max-len": [ "error", 79 ],
+    "max-lines": [ "error", { "max": 100 } ],
+    "max-statements": [ "error" ],
+    "new-parens": [ "error" ],
+    "newline-per-chained-call": [ "error", { "ignoreChainWithDepth": 4 } ],
+    "no-multiple-empty-lines": [ "error", { "max": 1 } ],
+    "no-shadow": [ "error" ],
+    "no-underscore-dangle": [ "error", { "allowAfterThis": true } ],
+    "no-unused-vars": [ "error", {
+      "argsIgnorePattern": "^_",
+      "varsIgnorePattern": "^_"
+    } ],
+    "no-var": [ "error" ],
+    "object-curly-spacing": [ "error", "always" ],
+    "quotes": [ "error", "single" ],
+    "semi": [ "error", "always" ],
+    "valid-jsdoc": [ "error", {
+      "requireReturn": true,
+      "requireReturnType": true
+    } ]
+  }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>RSS Reader</title>
+
+    <link href="/styles/vendor/normalize.css" rel="stylesheet">
+    <link href="/styles/feed.css" rel="stylesheet">
+    <link href="/styles/article.css" rel="stylesheet">
+    <link href="/styles/article_content.css" rel="stylesheet">
+    <link href="/styles/reader.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1 class="page-header">RSS Reader</h1>
+
+    <div class="article article--hidden" id="article">
+      <article class="article__wrapper">
+        <header class="article__header">
+          <span class="article__buttons">
+            <a href="#" class="article__button" tabindex="1">&times;</a>
+          </span>
+          <h2>Article Name</h2>
+        </header>
+        <div class="article__content">Article Content</div>
+        <div class="article__directions">
+          <a href="#" class="article__button article__button--navigation article__button--left" tabindex="2" data-action="previous">&larr; Previous</a>
+          <a href="#" class="article__button article__button--navigation article__button--right" tabindex="4" data-action="next">Next &rarr;</a>
+          <a href="#" class="article__button article__button--navigation article__button--right" tabindex="3" data-action="view">View on site &raquo;</a>
+        </div>
+      </article>
+    </div>
+
+    <div id="feed-container"></div>
+
+    <script id="feed-template" type="text/html">
+      <section class="feed">
+        <header class="feed__header">
+          <span class="feed__buttons">
+            <a href="#" class="feed__button" data-action="toggle"></a>
+          </span>
+          <h2>Feed Name</h2>
+        </header>
+        <ul class="feed__articles"></ul>
+      </section>
+    </script>
+
+    <!-- Scripts -->
+
+    <script src="/scripts/vendor/jquery-3.1.1.min.js"></script>
+    <script src="/scripts/views/view.js"></script>
+    <script src="/scripts/views/article.js"></script>
+    <script src="/scripts/views/feed_article.js"></script>
+    <script src="/scripts/views/feed.js"></script>
+    <script src="/scripts/views/main.js"></script>
+    <script src="/scripts/reader.js"></script>
+  </body>
+</html>

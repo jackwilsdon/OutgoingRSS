@@ -1,0 +1,104 @@
+.article {
+  background-color: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  overflow: auto;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.article--hidden {
+  display: none;
+}
+
+.article__wrapper {
+  background-color: #FFF;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  margin: 0 auto;
+  max-width: 720px;
+  overflow: hidden;
+}
+
+.article__header {
+  background-color: #EEE;
+  cursor: pointer;
+  overflow: auto;
+  padding: 8px;
+}
+
+.article__header h1,
+.article__header h2,
+.article__header h3,
+.article__header h4,
+.article__header h5,
+.article__header h6 {
+  display: inline;
+  font-size: 1em;
+  margin: 0;
+}
+
+.article__header:hover .article__button {
+  color: #000;
+}
+
+.article__buttons {
+  float: right;
+  margin: 0 0 0 5px;
+}
+
+.article__button:link,
+.article__button:visited,
+.article__button:focus,
+.article__button:hover,
+.article__button:active {
+  color: #888;
+  margin: 0 4px;
+  text-decoration: none;
+}
+
+.article__button:focus,
+.article__button:hover {
+  color: #000;
+}
+
+.article__button--navigation + .article__button--navigation {
+    margin-left: 10px;
+}
+
+.article__button--navigation:link,
+.article__button--navigation:visited,
+.article__button--navigation:focus,
+.article__button--navigation:active {
+  color: #666;
+}
+
+.article__button--navigation:hover {
+  color: #000;
+}
+
+.article__button--left {
+  float: left;
+}
+
+.article__button--right {
+  float: right;
+}
+
+.article__button--hidden {
+  display: none;
+}
+
+.article__content {
+  border-top: 1px solid #DDD;
+  padding: 8px 8px 0 8px;
+}
+
+.article__directions {
+  overflow: auto;
+  padding: 8px;
+}

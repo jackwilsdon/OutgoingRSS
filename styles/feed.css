@@ -1,0 +1,73 @@
+.feed {
+  background-color: #FFF;
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.feed + .feed {
+  margin-top: 10px;
+}
+
+.feed__header {
+  background-color: #EEE;
+  cursor: pointer;
+  overflow: auto;
+  padding: 8px;
+}
+
+.feed__header h1,
+.feed__header h2,
+.feed__header h3,
+.feed__header h4,
+.feed__header h5,
+.feed__header h6 {
+  display: inline;
+  font-size: 1em;
+  margin: 0;
+}
+
+.feed__header:hover .feed__button {
+  color: #000;
+}
+
+.feed__buttons {
+  float: right;
+  margin: 0 0 0 5px;
+}
+
+.feed__button:link,
+.feed__button:visited,
+.feed__button:focus,
+.feed__button:hover,
+.feed__button:active {
+  color: #888;
+  margin: 0 4px;
+  text-decoration: none;
+}
+
+.feed__button:focus,
+.feed__button:hover {
+  color: #000;
+}
+
+.feed__button--hidden {
+  display: none;
+}
+
+.feed__articles {
+  border-top: 1px solid #DDD;
+  list-style: none;
+  margin: 0 0 8px 0;
+  padding: 0 8px 0 8px;
+}
+
+.feed__articles::before {
+  content: ' ';
+  display: block;
+  height: 8px;
+}
+
+.feed__articles li + li {
+  margin-top: 5px;
+}

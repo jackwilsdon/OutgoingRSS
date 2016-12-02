@@ -1,0 +1,11 @@
+.article__content img {
+  display: block;
+  margin: 0 auto 8px auto;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.article__content p:last-child {
+  margin-bottom: 0;
+}

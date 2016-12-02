@@ -1,0 +1,10 @@
+{
+  "globals": {
+    "$": false,
+    "ArticleView": false,
+    "FeedArticleView": false,
+    "FeedView": false,
+    "MainView": false,
+    "View": false
+  }
+}
