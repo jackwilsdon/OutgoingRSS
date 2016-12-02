@@ -20,5 +20,8 @@ class FeedArticleView extends View {
   }
 }
 
-FeedArticleView.template =
-  '<li><a href="#" class="feed__article-link"></a></li>';
+FeedArticleView.template = `
+  <li class="feed__article-item ">
+    <a href="#" class="feed__article-link"></a>
+  </li>
+`;

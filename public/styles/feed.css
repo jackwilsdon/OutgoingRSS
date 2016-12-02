@@ -56,20 +56,37 @@
 }
 
 .feed__articles {
+  border-radius: 0 0 4px 4px;
   border-top: 1px solid #DDD;
   list-style: none;
-  margin: 0 0 8px 0;
+  margin: 0;
   max-height: 200px;
   overflow: auto;
-  padding: 0 8px 0 8px;
+  padding:0;
 }
 
-.feed__articles::before {
-  content: ' ';
-  display: block;
-  height: 8px;
+.feed__article-item + .feed__article-item {
+  border-top: 1px solid #DDD;
 }
 
-.feed__articles li + li {
-  margin-top: 5px;
+.feed__article-link {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 8px;
+  width: 100%;
+}
+
+.feed__article-link:link,
+.feed__article-link:visited,
+.feed__article-link:focus,
+.feed__article-link:hover,
+.feed__article-link:active {
+  color: #777;
+  text-decoration: none;
+}
+
+.feed__article-link:focus,
+.feed__article-link:hover {
+  background-color: #F5F5F5;
+  color: #000;
 }
