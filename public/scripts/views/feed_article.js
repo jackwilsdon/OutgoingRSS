@@ -8,9 +8,10 @@ class FeedArticleView extends View {
     this.listen({ 'click a': 'click' });
   }
 
-  click() {
+  click(event) {
     this.articleView.article = this.article;
     this.articleView.render().show();
+    event.preventDefault();
   }
 
   render() {

@@ -7,9 +7,19 @@ class ArticleView extends View {
     this.listen({
       'click': event => event.target === this.element ? this.hide() : null,
       'click .article__header': () => this.hide(),
-      'click .article__button[data-action="previous"]': () => this.previous(),
-      'click .article__button[data-action="next"]': () => this.next(),
+      'click .article__button[data-action="previous"]': 'clickPrevious',
+      'click .article__button[data-action="next"]': 'clickNext',
     });
+  }
+
+  clickPrevious(event) {
+    this.previous();
+    event.preventDefault();
+  }
+
+  clickNext(event) {
+    this.next();
+    event.preventDefault();
   }
 
   previous(render = true) {
