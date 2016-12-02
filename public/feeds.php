@@ -12,7 +12,7 @@ $feeds = array();
 
 foreach ($feed_addresses as $address) {
   $id = md5($address);
-  $cacheFile = __DIR__ . "/cache/$id.xml";
+  $cacheFile = __DIR__ . "/../cache/$id.xml";
 
   $feeds[$id] = new CachedRSSFeed($address, $cacheFile);
 }
