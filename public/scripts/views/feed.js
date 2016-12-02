@@ -24,6 +24,7 @@ class FeedView extends View {
 
   render() {
     this.$element.find('.feed__header :header').text(this.name);
+    this.$content.html('');
 
     this.articles.forEach(article =>
       this.$content.append(
