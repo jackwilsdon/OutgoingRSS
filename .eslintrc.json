@@ -20,7 +20,7 @@
     } ],
     "linebreak-style": [ "error", "unix" ],
     "max-len": [ "error", 79 ],
-    "max-lines": [ "error", { "max": 100 } ],
+    "max-lines": [ "error", { "max": 100, "skipComments": true } ],
     "max-statements": [ "error" ],
     "new-parens": [ "error" ],
     "newline-per-chained-call": [ "error", { "ignoreChainWithDepth": 4 } ],
