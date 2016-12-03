@@ -1,5 +1,5 @@
 class FeedView extends View {
-  constructor(name, articleView, articles = []) {
+  constructor(name, articleView, articles) {
     super();
 
     this.name = name;
