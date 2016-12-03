@@ -42,7 +42,7 @@ class MainView extends View {
       error = response;
     }
 
-    console.error(`Failed to update feeds from ${this.endpoint}: ${error}`);
+    throw new Error(`Failed to update feeds from ${this.endpoint}: ${error}`);
   }
 
   update() {
