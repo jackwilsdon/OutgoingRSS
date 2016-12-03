@@ -4,8 +4,10 @@ class View {
       this.$element = this.constructor.$element;
     } else if (this.constructor.hasOwnProperty('element')) {
       this.$element = $(this.constructor.element);
-    } else {
-      this.$element = this.$template();
+    } else if (this.constructor.hasOwnProperty('$template')){
+      this.$element = this.constructor.$template.clone();
+    } else if (this.constructor.hasOwnProperty('template')) {
+      this.$element = $(this.constructor.template);
     }
 
     this.element = this.$element.get(0);
@@ -19,14 +21,6 @@ class View {
 
       this.$element.on(name, selector, callback);
     }
-  }
-
-  $template() {
-    return $(this.constructor.template);
-  }
-
-  template() {
-    return this.$template().get(0);
   }
 
   render() {
