@@ -19,7 +19,10 @@ class MainView extends View {
 
   updateFeed(feed, data) {
     feed.name = data.name;
-    feed.articles = data.articles;
+    feed.articles = data.articles.map(article => Object.assign(article, {
+      previous: null,
+      next: null,
+    }));
 
     feed.articles.reduce((previous, next) => {
       previous.next = next;

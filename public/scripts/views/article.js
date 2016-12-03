@@ -23,7 +23,7 @@ class ArticleView extends View {
   }
 
   previous(render = true) {
-    if (this.article.hasOwnProperty('previous')) {
+    if (this.article.previous !== null) {
       this.article = this.article.previous;
 
       if (render) {
@@ -33,7 +33,7 @@ class ArticleView extends View {
   }
 
   next(render = true) {
-    if (this.article.hasOwnProperty('next')) {
+    if (this.article.next !== null) {
       this.article = this.article.next;
 
       if (render) {
@@ -53,13 +53,11 @@ class ArticleView extends View {
 
     this.$element
       .find('.article__button[data-action="previous"]')
-      .toggleClass('article__button--hidden',
-        !this.article.hasOwnProperty('previous'));
+      .toggleClass('article__button--hidden', this.article.previous === null);
 
     this.$element
       .find('.article__button[data-action="next"]')
-      .toggleClass('article__button--hidden',
-        !this.article.hasOwnProperty('next'));
+      .toggleClass('article__button--hidden', this.article.next === null);
 
     this.$element
       .find('.article__button[data-action="view"]')
