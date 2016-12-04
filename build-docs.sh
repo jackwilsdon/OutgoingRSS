@@ -29,7 +29,7 @@ rm -rf "${JSDOC_OUTPUT}" || fail
 mv "${JSDOC_TEMPORARY_OUTPUT}" "${JSDOC_OUTPUT}" || fail
 
 if [ -n "$(git status -s)" ]; then
-    git add jsdoc || fail
+    git add "${JSDOC_OUTPUT}" || fail
 
     git commit -m "${1:-Update documentation}" || fail
 else
