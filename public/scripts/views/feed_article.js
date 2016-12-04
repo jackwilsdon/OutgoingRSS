@@ -1,9 +1,9 @@
 /**
  * A single row in a {@link Feed}.
  *
+ * @constructor
  * @param {ArticleView} articleView the view to use when rendering an article
  * @param {Article} article the article to use when rendering
- * @constructor
  */
 function FeedArticleView(articleView, article) {
   View.call(this);
@@ -25,9 +25,8 @@ FeedArticleView.prototype.constructor = FeedArticleView;
  *   This updates the article for the article view and renders / shows it.
  * </p>
  *
- * @param {Event} event the click event for the link
- * @returns {undefined}
  * @private
+ * @param {Event} event the click event for the link
  */
 FeedArticleView.prototype.click = function(event) {
   this.articleView.article = this.article;

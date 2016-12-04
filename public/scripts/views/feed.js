@@ -40,7 +40,6 @@ FeedView.prototype.constructor = FeedView;
  *   not.
  * </p>
  *
- * @returns {undefined}
  * @private
  */
 FeedView.prototype.headerClick = function() {
@@ -80,7 +79,6 @@ FeedView.prototype.render = function() {
  *
  * @param {boolean} [animated=true] whether or not to animate the hiding of the
  *                                  content
- * @returns {undefined}
  */
 FeedView.prototype.hide = function(animated) {
   this.$button.html('&plus;');
@@ -97,7 +95,6 @@ FeedView.prototype.hide = function(animated) {
  *
  * @param {boolean} [animated=true] whether or not to animate the showing of
  *                                  the content
- * @returns {undefined}
  */
 FeedView.prototype.show = function(animated) {
   this.$button.html('&minus;');

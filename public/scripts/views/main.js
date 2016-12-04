@@ -21,9 +21,8 @@ function MainView(endpoint) {
 /**
  * Removes feeds that no longer exist and adds new feeds from the data.
  *
- * @param {FeedCollection} data the feeds to use when updating the view
- * @returns {undefined}
  * @private
+ * @param {FeedCollection} data the feeds to use when updating the view
  */
 MainView.prototype.handleChangedFeeds = function(data) {
   var id;
@@ -44,10 +43,9 @@ MainView.prototype.handleChangedFeeds = function(data) {
 /**
  * Updates the provided feed view using the provided feed.
  *
+ * @private
  * @param {FeedView} feed the feed view to update
  * @param {Feed} data the feed to use when updating
- * @returns {undefined}
- * @private
  */
 MainView.prototype.updateFeed = function(feed, data) {
   feed.name = data.name;
@@ -66,9 +64,8 @@ MainView.prototype.updateFeed = function(feed, data) {
 /**
  * Updates all feeds in the provided collection.
  *
- * @param {FeedCollection} data the collection of feeds to be updated
- * @returns {undefined}
  * @private
+ * @param {FeedCollection} data the collection of feeds to be updated
  */
 MainView.prototype.updateFeeds = function(data) {
   this.handleChangedFeeds(data);
@@ -83,12 +80,11 @@ MainView.prototype.updateFeeds = function(data) {
 /**
  * Error callback for {@link #update()}.
  *
+ * @private
  * @param {Object} response the response object
  * @param {string} status the status code for the error
  * @param {string} error the message for the error
- * @returns {undefined}
  * @throws {Error}
- * @private
  */
 MainView.prototype.updateError = function(response, status, error) {
   if (response instanceof Error) {
@@ -102,7 +98,6 @@ MainView.prototype.updateError = function(response, status, error) {
 /**
  * Updates the view using the endpoint provided in the constructor.
  *
- * @returns {undefined}
  */
 MainView.prototype.update = function() {
   return $.getJSON(this.endpoint)

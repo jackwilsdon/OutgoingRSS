@@ -65,7 +65,6 @@ function View() {
  * method of the view or a callback function.
  *
  * @param {Object} events the event data to register
- * @returns {undefined}
  */
 View.prototype.listen = function(events) {
   for (var key in events) {

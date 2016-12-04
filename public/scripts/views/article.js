@@ -13,8 +13,8 @@
 /**
  * A modal view of a single article.
  *
- * @param {Article} article the article to use when rendering
  * @constructor
+ * @param {Article} article the article to use when rendering
  */
 function ArticleView(article) {
   View.call(this);
@@ -46,9 +46,8 @@ ArticleView.prototype.constructor = ArticleView;
  *   view.
  * </p>
  *
- * @param {Event} event the click event for the previous button
- * @returns {undefined}
  * @private
+ * @param {Event} event the click event for the previous button
  */
 ArticleView.prototype.clickPrevious = function(event) {
   this.previous();
@@ -63,9 +62,8 @@ ArticleView.prototype.clickPrevious = function(event) {
  *   view.
  * </p>
  *
- * @param {Event} event the click event for the next button
- * @returns {undefined}
  * @private
+ * @param {Event} event the click event for the next button
  */
 ArticleView.prototype.clickNext = function(event) {
   this.next();
@@ -82,7 +80,6 @@ ArticleView.prototype.clickNext = function(event) {
  * @param {boolean} [render=true] whether or not to call
  *                         {@link ArticleView#render} on the new article after
  *                         the article has changed
- * @returns {undefined}
  */
 ArticleView.prototype.previous = function(render) {
   if (this.article.previous !== null) {
@@ -104,7 +101,6 @@ ArticleView.prototype.previous = function(render) {
  * @param {boolean} [render=true] whether or not to call
  *                         {@link ArticleView#render} on the new article after
  *                         the article has changed
- * @returns {undefined}
  */
 ArticleView.prototype.next = function(render) {
   if (this.article.next !== null) {
@@ -157,7 +153,6 @@ ArticleView.prototype.render = function() {
  *
  * @param {boolean} [animated=true] whether or not to animate the hiding of the
  *                                  modal
- * @returns {undefined}
  */
 ArticleView.prototype.hide = function(animated) {
   if (arguments.length === 0 || animated) {
@@ -174,7 +169,6 @@ ArticleView.prototype.hide = function(animated) {
  *                                  the element
  * @param {boolean} [focus=true] whether or not to focus the element once it
  *                               has been made visible
- * @returns {undefined}
  */
 ArticleView.prototype.show = function(animated, focus) {
   if (arguments.length === 0 || animated) {
