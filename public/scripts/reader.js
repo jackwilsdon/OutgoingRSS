@@ -1,11 +1,11 @@
-$(document).ready(() => {
+$(document).ready(function() {
   ArticleView.$element = $('#article');
   FeedView.template = $('#feed-template').html();
   MainView.$element = $('#feed-container');
 
-  const main = new MainView('/feeds.php');
+  var main = new MainView('/feeds.php');
 
-  $(document).keydown(event => {
+  $(document).keydown(function(event)  {
     if (event.key === 'Escape') {
       main.articleView.hide();
     }
