@@ -4,6 +4,7 @@
     "exclude": [ "public/scripts/vendor" ]
   },
   "opts": {
-    "destination": "jsdoc"
+    "destination": "jsdoc",
+    "recurse": true
   }
 }
