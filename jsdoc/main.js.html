@@ -34,120 +34,118 @@
 
 /**
  * A group of dynamically retrieved feeds.
+ *
+ * @param {string} endpoint the endpoint to use when requesting new data
+ * @constructor
  */
-class MainView extends View {
+function MainView(endpoint) {
+  View.call(this);
 
-  /**
-   * Constructs a new view with the specified endpoint.
-   *
-   * @param {string} endpoint the endpoint to use when requesting new data
-   */
-  constructor(endpoint) {
-    super();
-
-    this.endpoint = endpoint;
-    this.articleView = new ArticleView();
-    this.feeds = {};
-  }
-
-  /**
-   * Removes feeds that no longer exist and adds new feeds from the data.
-   *
-   * @param {FeedCollection} data the feeds to use when updating the view
-   * @returns {undefined}
-   * @private
-   */
-  handleChangedFeeds(data) {
-    Object.keys(this.feeds)
-      .filter(id => !data.hasOwnProperty(id))
-      .forEach(id => delete this.feeds[id]);
-
-    Object.keys(data)
-      .filter(id => !this.feeds.hasOwnProperty(id))
-      .forEach(id => this.feeds[id] = new FeedView(id, this.articleView));
-  }
-
-  /**
-   * Updates the provided feed view using the provided feed.
-   *
-   * @param {FeedView} feed the feed view to update
-   * @param {Feed} data the feed to use when updating
-   * @returns {undefined}
-   * @private
-   */
-  updateFeed(feed, data) {
-    feed.name = data.name;
-    feed.articles = data.articles.map(article => Object.assign(article, {
-      previous: null,
-      next: null,
-    }));
-
-    feed.articles.reduce((previous, next) => {
-      previous.next = next;
-      next.previous = previous;
-      return next;
-    });
-
-    feed.render();
-  }
-
-  /**
-   * Updates all feeds in the provided collection.
-   *
-   * @param {FeedCollection} data the collection of feeds to be updated
-   * @returns {undefined}
-   * @private
-   */
-  updateFeeds(data) {
-    Object.keys(data).forEach(id => this.updateFeed(this.feeds[id], data[id]));
-  }
-
-  /**
-   * Error callback for {@link #update()}.
-   *
-   * @param {Object} response the response object
-   * @param {string} status the status code for the error
-   * @param {string} error the message for the error
-   * @returns {undefined}
-   * @throws {Error}
-   * @private
-   */
-  updateError(response, status, error) {
-    if (response instanceof Error) {
-      error = response;
-    }
-
-    throw new Error(`Failed to update feeds from ${this.endpoint}: ${error}`);
-  }
-
-  /**
-   * Updates the view using the endpoint provided in the constructor.
-   *
-   * @returns {undefined}
-   */
-  update() {
-    return $.getJSON(this.endpoint)
-      .promise()
-      .then(data => {
-        this.handleChangedFeeds(data);
-        this.updateFeeds(data);
-        this.render();
-      })
-      .catch((...args) => this.updateError(...args));
-  }
-
-  /**
-   * Renders all feeds into the class's element.
-   *
-   * @returns {MainView} the current view for chaining calls
-   */
-  render() {
-    Object.keys(this.feeds)
-      .sort()
-      .map(id => this.feeds[id].render())
-      .forEach(feed => this.$element.append(feed.$element));
-  }
+  this.endpoint = endpoint;
+  this.articleView = new ArticleView();
+  this.feeds = {};
 }
+
+/**
+ * Removes feeds that no longer exist and adds new feeds from the data.
+ *
+ * @private
+ * @param {FeedCollection} data the feeds to use when updating the view
+ */
+MainView.prototype.handleChangedFeeds = function(data) {
+  var id;
+
+  for (id in this.feeds) {
+    if (!data.hasOwnProperty(id)) {
+      delete this.feeds[id];
+    }
+  }
+
+  for (id in data) {
+    if  (!this.feeds.hasOwnProperty(id)) {
+      this.feeds[id] = new FeedView(id, this.articleView);
+    }
+  }
+};
+
+/**
+ * Updates the provided feed view using the provided feed.
+ *
+ * @private
+ * @param {FeedView} feed the feed view to update
+ * @param {Feed} data the feed to use when updating
+ */
+MainView.prototype.updateFeed = function(feed, data) {
+  feed.name = data.name;
+  feed.articles = data.articles;
+
+  for (var index = 0; index &lt; feed.articles.length; index++) {
+    var article = feed.articles[index],
+        hasPrevious = index > 0,
+        hasNext = index &lt; feed.articles.length - 1;
+
+    article.previous = hasPrevious ? feed.articles[index - 1] : null;
+    article.next = hasNext ? feed.articles[index + 1] : null;
+  }
+};
+
+/**
+ * Updates all feeds in the provided collection.
+ *
+ * @private
+ * @param {FeedCollection} data the collection of feeds to be updated
+ */
+MainView.prototype.updateFeeds = function(data) {
+  this.handleChangedFeeds(data);
+
+  for (var id in data) {
+    this.updateFeed(this.feeds[id], data[id]);
+  }
+
+  this.render();
+};
+
+/**
+ * Error callback for {@link #update()}.
+ *
+ * @private
+ * @param {Object} response the response object
+ * @param {string} status the status code for the error
+ * @param {string} error the message for the error
+ * @throws {Error}
+ */
+MainView.prototype.updateError = function(response, status, error) {
+  if (response instanceof Error) {
+    error = response;
+  }
+
+  throw new Error('Failed to update feeds from ' + this.endpoint + ': ' +
+                  error);
+};
+
+/**
+ * Updates the view using the endpoint provided in the constructor.
+ *
+ */
+MainView.prototype.update = function() {
+  return $.getJSON(this.endpoint)
+    .promise()
+    .then(this.updateFeeds.bind(this))
+    .catch(this.updateError.bind(this));
+};
+
+/**
+ * Renders all feeds into the class's element.
+ *
+ * @returns {MainView} the current view for chaining calls
+ */
+MainView.prototype.render = function() {
+  Object.keys(this.feeds).sort().forEach(function(id) {
+    this.$element.append(this.feeds[id].render().element);
+  }, this);
+
+  return this;
+};
 
 MainView.template = $('&lt;div>');
 </code></pre>
@@ -166,7 +164,7 @@ MainView.template = $('&lt;div>');
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sat Dec 03 2016 01:38:22 GMT+0000 (GMT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Dec 04 2016 03:36:21 GMT+0000 (GMT)
 </footer>
 
 <script> prettyPrint(); </script>
