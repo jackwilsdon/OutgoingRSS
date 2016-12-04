@@ -51,10 +51,6 @@
   color: #000;
 }
 
-.feed__button--hidden {
-  display: none;
-}
-
 .feed__articles {
   border-radius: 0 0 4px 4px;
   border-top: 1px solid #DDD;
