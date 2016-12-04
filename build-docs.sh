@@ -1,3 +1,3 @@
 #!/bin/bash
 
-jsdoc -r README.md public/scripts -d jsdoc
+jsdoc -c jsdoc.json

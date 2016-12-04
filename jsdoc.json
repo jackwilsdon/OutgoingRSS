@@ -1,0 +1,9 @@
+{
+  "source": {
+    "include": [ "public/scripts" ],
+    "exclude": [ "public/scripts/vendor" ]
+  },
+  "opts": {
+    "destination": "jsdoc"
+  }
+}
