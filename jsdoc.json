@@ -1,0 +1,15 @@
+{
+  "source": {
+    "include": [ "public/scripts" ],
+    "exclude": [ "public/scripts/vendor" ]
+  },
+  "templates": {
+    "default": {
+      "includeDate": false
+    }
+  },
+  "opts": {
+    "destination": "jsdoc",
+    "recurse": true
+  }
+}
