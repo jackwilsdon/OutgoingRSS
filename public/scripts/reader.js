@@ -10,11 +10,13 @@ $(document).ready(function() {
       main.articleView.hide();
     }
 
-    if (event.key === 'ArrowLeft') {
+    //keycode 37 is Left Arrow Key
+    if (event.key === 'ArrowLeft' || event.keyCode === 37) {
       main.articleView.previous();
     }
 
-    if (event.key === 'ArrowRight') {
+    //keycode 39 is Left Arrow Key
+    if (event.key === 'ArrowRight' || event.keyCode === 39) {
       main.articleView.next();
     }
   });
